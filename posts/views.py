@@ -1,6 +1,16 @@
 from rest_framework import generics
-from .models import Post
-from .serializers import PostSerializer, PostRetrieveSerializer
+from .models import Post, Tag
+from .serializers import PostSerializer, PostRetrieveSerializer, TagSerializer, TagRetrieveSerializer
+
+
+class TagAPIView(generics.ListCreateAPIView):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+
+
+class TagRetrieveAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Tag.objects.all()
+    serializer_class = TagRetrieveSerializer
 
 
 class PostAPIView(generics.ListCreateAPIView):

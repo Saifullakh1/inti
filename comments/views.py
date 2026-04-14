@@ -11,6 +11,11 @@ class CommentAPIView(generics.CreateAPIView):
     serializer_class = CommentSerializer
 
 
+class CommentRetrieveAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+
+
 class LikeAPIView(generics.CreateAPIView):
     queryset = Like.objects.all()
     serializer_class = LikeSerializer
