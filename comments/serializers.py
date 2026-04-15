@@ -8,6 +8,14 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class CommentForPostSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(source='user.name')
+
+    class Meta:
+        model = Comment
+        fields = ['id', 'description', 'name']
+
+
 class LikeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Like

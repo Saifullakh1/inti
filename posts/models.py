@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 
 
 class Tag(models.Model):
@@ -14,6 +15,7 @@ class Post(models.Model):
     image = models.FileField(upload_to="post_images", blank=True, verbose_name="Картинка")
     created_at = models.DateField(auto_now=True, verbose_name="Дата создания")
     tags = models.ManyToManyField(Tag, related_name="post_tags")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_posts')
 
     def __str__(self):
         return self.title

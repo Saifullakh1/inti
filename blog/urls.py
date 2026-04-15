@@ -22,7 +22,8 @@ from django.conf.urls.static import static
 
 api_urlpatterns = [
     path('', include('posts.urls')),
-    path('', include('comments.urls'))
+    path('', include('comments.urls')),
+    path('', include('users.urls'))
 ]
 
 urlpatterns = [
