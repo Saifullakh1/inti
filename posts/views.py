@@ -1,6 +1,7 @@
 from rest_framework import generics
 from .models import Post, Tag
 from .serializers import PostSerializer, PostRetrieveSerializer, TagSerializer, TagRetrieveSerializer
+from rest_framework.permissions import IsAuthenticated
 
 
 class TagAPIView(generics.ListCreateAPIView):
@@ -16,6 +17,7 @@ class TagRetrieveAPIView(generics.RetrieveUpdateDestroyAPIView):
 class PostAPIView(generics.ListCreateAPIView):
     queryset = Post.objects.all() # SELECT * FROM post
     serializer_class = PostSerializer # INSERT INTO post VALUES
+    permission_classes = [IsAuthenticated, ]
 
 
 class PostRetrieveAPView(generics.RetrieveUpdateDestroyAPIView):
