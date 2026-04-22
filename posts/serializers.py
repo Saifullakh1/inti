@@ -15,10 +15,17 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ['id', 'title', 'description', 'image', 'likes', 'created_at', 'tags', 'author']
+        fields = ['id', 'title', 'description', 'image', 'likes', 'created_at', 'tags', 'user', 'author']
 
     def get_likes(self, obj):
         return obj.post_likes.count()
+
+
+class PostCreateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Post
+        fields = ['id', 'title', 'description', 'image', 'tags', 'user',]
 
 
 class PostRetrieveSerializer(serializers.ModelSerializer):
